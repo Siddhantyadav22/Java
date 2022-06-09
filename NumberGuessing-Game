@@ -1,0 +1,38 @@
+import javax.swing.*;
+
+    public class GuessingGame {
+        public static void main(String[] args) {
+            int C_Number = (int) (Math.random()*100 + 1);
+            int U_answer = 0;
+            //System.out.println("The correct guess would be " + C_Number);
+            int count = 1;
+
+            while (U_answer != C_Number)
+            {
+                String response = JOptionPane.showInputDialog(null,
+                        "Enter a guess between 1 and 100", "Guessing Game", 3);
+                U_answer = Integer.parseInt(response);
+                JOptionPane.showMessageDialog(null, ""+ determineGuess(U_answer, C_Number, count));
+                count++;
+            }
+            System.out.println("The correct guess would be " + C_Number);
+        }
+
+        public static String determineGuess(int U_Answer, int C_Number, int count){
+            if (U_Answer <=0 || U_Answer >100) {
+                return "Your guess is invalid";
+            }
+            else if (U_Answer == C_Number ){
+                return "Correct!\nTotal Guesses: " + count;
+            }
+            else if (U_Answer > C_Number) {
+                return "Your guess is too high, try again.\nTry Number: " + count;
+            }
+            else if (U_Answer < C_Number) {
+                return "Your guess is too low, try again.\nTry Number: " + count;
+            }
+            else {
+                return "Your guess is incorrect\nTry Number: " + count;
+            }
+        }
+    }
