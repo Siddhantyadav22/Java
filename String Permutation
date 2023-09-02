@@ -1,0 +1,31 @@
+import java.util.*;
+
+public class Main
+{
+    public static String Rearrange(String X,String Y){
+        int[] xFeq = new int[26];
+        int[] yFeq = new int[26];
+        
+        for(char c:X.toCharArray()){
+            xFeq[c-'a']++;
+        }
+        for(char c:Y.toCharArray()){
+            yFeq[c-'a']++;
+        }
+        for(int i=0;i<26;i++){
+            if(xFeq[i]!=yFeq[i]){
+                return "no";
+            }
+        }
+        return "yes";
+        
+    }
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		String X=sc.nextLine();
+		String Y=sc.nextLine();
+		String result = Rearrange(X,Y);
+		System.out.println(result);
+	}
+	
+}
